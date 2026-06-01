@@ -110,10 +110,6 @@ package com.example.urlshortener.controller;
 
 import java.util.List;
 
-import java.util.List;
-import javax.servlet.http.HttpServletRequest;
-import jakarta.servlet.http.HttpServletRequest;
-
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -129,6 +125,8 @@ import com.example.urlshortener.model.UrlMapping;
 import com.example.urlshortener.model.UrlRequest;
 import com.example.urlshortener.service.QrCodeService;
 import com.example.urlshortener.service.UrlService;
+
+import jakarta.servlet.http.HttpServletRequest;
 
 @RestController
 public class UrlController {
@@ -238,6 +236,13 @@ public class UrlController {
     }
 
     private String getBaseUrl(HttpServletRequest request) {
+        String forwardedProto = request.getHeader("X-Forwarded-Proto");
+        String forwardedHost = request.getHeader("X-Forwarded-Host");
+
+        if (forwardedProto != null && forwardedHost != null) {
+            return forwardedProto + "://" + forwardedHost;
+        }
+
         StringBuffer requestURL = request.getRequestURL();
         String requestURI = request.getRequestURI();
         String contextPath = request.getContextPath();
