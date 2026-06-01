@@ -156,6 +156,24 @@ public class UrlController {
         );
     }
 
+        // Simple homepage
+        @GetMapping(value = "/", produces = MediaType.TEXT_HTML_VALUE)
+        public ResponseEntity<String> home() {
+        String html = "<html><head><title>URL Shortener</title></head>"
+            + "<body><h1>URL Shortener</h1>"
+            + "<p>Available endpoints:</p>"
+            + "<ul>"
+            + "<li>POST /shorten</li>"
+            + "<li>GET /all</li>"
+            + "<li>GET /search?keyword=...</li>"
+            + "<li>GET /{shortCode} (redirect)</li>"
+            + "</ul></body></html>";
+
+        return ResponseEntity.ok()
+            .contentType(MediaType.TEXT_HTML)
+            .body(html);
+        }
+
     // Redirect to original URL
     @GetMapping("/{shortCode}")
     public RedirectView redirect(

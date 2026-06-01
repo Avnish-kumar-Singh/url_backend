@@ -16,9 +16,18 @@ public class CorsConfig {
             @Override
             public void addCorsMappings(CorsRegistry registry) {
 
-                registry.addMapping("/**")
-                        .allowedOrigins("http://localhost:5173")
-                        .allowedMethods("*");
+                // Allow localhost for development and an optional FRONTEND_URL env var for production
+                String frontend = System.getenv("FRONTEND_URL");
+
+                if (frontend != null && !frontend.isBlank()) {
+                    registry.addMapping("/**")
+                            .allowedOrigins("http://localhost:5173", frontend)
+                            .allowedMethods("*");
+                } else {
+                    registry.addMapping("/**")
+                            .allowedOrigins("http://localhost:5173")
+                            .allowedMethods("*");
+                }
 
             }
 

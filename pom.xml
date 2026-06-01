@@ -19,7 +19,7 @@
     <description>URL Shortener Project</description>
 
     <properties>
-        <java.version>21</java.version>
+        <java.version>17</java.version>
     </properties>
 
     <dependencies>
@@ -86,8 +86,8 @@
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
                 <configuration>
-                    <source>21</source>
-                    <target>21</target>
+                    <source>17</source>
+                    <target>17</target>
 
                     <annotationProcessorPaths>
                         <path>
@@ -125,9 +125,12 @@
 
                     <subscriptionId>c80a6570-ead2-401c-8052-4d79047dc635</subscriptionId>
 
-                    <resourceGroup>urlshortner</resourceGroup>
+                    <resourceGroup>urlshortnerr</resourceGroup>
 
-                    <appName>urls</appName>
+                    <appName>urls-backend-app</appName>
+
+                    <region>southeastasia</region>
+                    <appServicePlanName>ASP-urlshortner-9be5</appServicePlanName>
 
                     <runtime>
                         <os>Linux</os>
