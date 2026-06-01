@@ -125,7 +125,7 @@
 
                     <subscriptionId>c80a6570-ead2-401c-8052-4d79047dc635</subscriptionId>
 
-                    <resourceGroup>urlshortener-rg</resourceGroup>
+                    <resourceGroup>urlshortner</resourceGroup>
 
                     <appName>urls</appName>
 
